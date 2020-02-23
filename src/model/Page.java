@@ -10,7 +10,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
 
 /**
  *
@@ -38,19 +37,6 @@ public class Page extends BorderPane{
     
     public final void setPieds(HBox pieds){
         this.setBottom(pieds);
-        /*Text infosLegales =  new Text("Informations légales:\n" +
-        "N° ELEVEUR : 701022 - N° CAPACITE : 70025 - N° AFFIXE : 69109\n" +
-        "N° SIRET : 478 322 340 000 17 (B)\n" +
-        "N° Enregistrement MSA Gestion des Entreprises : 478322340 00017");
-                infosLegales.getStyleClass().add("infos-legales");
-
-                Text contact = new Text("CONTACT : Françoise Vieillard\n" +
-        "Portable : 06 82 41 39 58\n" +
-        "Tél.fixe : 03 84 74 31 22");
-        contact.getStyleClass().add("contact");
-        
-        pieds.getChildren().add(infosLegales);
-        pieds.getChildren().add(contact);*/
         pieds.getChildren().add(new ImageView(new Image(getClass().getResourceAsStream("footer.png"))));
     }
     
