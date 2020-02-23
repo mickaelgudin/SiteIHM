@@ -5,23 +5,20 @@
  */
 package siteihm;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.TextArea;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.paint.Color;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.BarreMenu;
 import model.Menu;
+import model.Page;
 
 /**
  *
@@ -33,41 +30,36 @@ public class SiteIHM extends Application {
     public void start(Stage stage) {
         
         stage.setTitle("Elevage de Yorkshire de Villardières");
-    	stage.setWidth(1000);
-    	stage.setHeight(800);
+    	stage.setWidth(1200);
+    	stage.setHeight(900);
     	Scene scene = new Scene(new Group());
         /*charger fichier de style*/
         scene.getStylesheets().add("siteihm/style.css");
    	 
-     	BorderPane gridPane = new BorderPane();
-        
-        /*Definition des element du menu*/
-        List<Menu> menus = new ArrayList<>();
-        menus.add(new Menu("ACCUEIL"));
-        menus.add(new Menu("NAISSANCES"));
-        menus.add(new Menu("DISPONIBILITES"));
-        menus.add(new Menu("CONTACT"));
+        Text contenuCorpsPage =  new Text("");
             
         /* creation de la barre de menu avec ses menus*/ 
-        BarreMenu mb = new BarreMenu(menus); 
+        BarreMenu mb = new BarreMenu();
+        mb.setMenus(contenuCorpsPage);
         
-        
-        TextArea corpsDeLaPage =  new TextArea("Mettre le contenu de la page d'accueil");
-        corpsDeLaPage.setEditable(false);
-        
-        TextArea piedDeLaPage =  new TextArea("Mettre le contenu de la du pied de page");
-        piedDeLaPage.setEditable(false);
-        piedDeLaPage.setBorder(new Border(new BorderStroke(Color.BLACK, 
-                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-        
-        /*Menu en haut*/
-        gridPane.setTop(mb);
-        /*corps de la page au milieu*/
-        gridPane.setCenter(corpsDeLaPage);
-        /*pied de la page au milieu*/
-        gridPane.setBottom(piedDeLaPage);
+        ScrollPane corpsPage = new ScrollPane();
        
-        scene.setRoot(gridPane);
+        corpsPage.setContent(contenuCorpsPage);
+        
+        HBox piedPage = new HBox();
+        
+        
+        piedPage.getStyleClass().add("pied-page");
+        
+        piedPage.setSpacing(100);
+        piedPage.setPadding(new Insets(10));
+        
+        
+        Page page = new Page(mb, corpsPage, piedPage);
+       
+        corpsPage.getStyleClass().add("corps-page");
+        
+        scene.setRoot(page);
  
         stage.setScene(scene);
         stage.show();

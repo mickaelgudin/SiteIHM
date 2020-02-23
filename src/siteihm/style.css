@@ -9,12 +9,29 @@ and open the template in the editor.
 */
 
 .menu-bar{
-    -fx-background-color: #6699ff;
-    -fx-text-background-color: #6699ff ;
-    -fx-font-size: 22;
+    -fx-background-color: purple;
+    -fx-text-background-color: purple;
 }
 .menu{
-    -fx-background-color: white;
 }
 
 
+.titre{
+    -fx-font-weight: bold;
+    -fx-font-size: 22;
+}
+
+.contact, .infos-legales{
+    -fx-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 22;
+    
+}
+
+.pied-page{
+    -fx-background-color: purple;
+}
+
+.corps-page{
+    -fx-background-color: white;
+}
