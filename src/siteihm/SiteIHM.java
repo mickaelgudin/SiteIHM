@@ -40,10 +40,10 @@ public class SiteIHM extends Application {
             
         /* creation de la barre de menu avec ses menus*/ 
         BarreMenu mb = new BarreMenu();
-        mb.setMenus(contenuCorpsPage);
+        
         
         ScrollPane corpsPage = new ScrollPane();
-       
+        mb.setMenus(corpsPage);
         corpsPage.setContent(contenuCorpsPage);
         
         HBox piedPage = new HBox();
@@ -56,7 +56,9 @@ public class SiteIHM extends Application {
         
         
         Page page = new Page(mb, corpsPage, piedPage);
-       
+        Label l = new Label();
+        mb.menus.add(new Menu("", l, "reservVVV", corpsPage));
+        
         corpsPage.getStyleClass().add("corps-page");
         
         scene.setRoot(page);
