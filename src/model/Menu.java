@@ -6,6 +6,7 @@
 package model;
 
 import controller.Database;
+import controller.Email;
 import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
@@ -35,7 +36,63 @@ public class Menu extends javafx.scene.control.Menu{
                 nomMenu.setOnMouseClicked(mouseEvent->{corps.setContent(new Text(Contenu.getAccueil()) );});
                 break;
             case "CONTACT" :
-                nomMenu.setOnMouseClicked(mouseEvent->{corps.setContent(new Text("CONTACT"));});
+                VBox vbox2 = new VBox();
+                Label objet = new Label("Objet : ");
+                vbox2.getChildren().add(objet);
+                TextField objetField = new TextField();
+                vbox2.getChildren().add(objetField);
+                
+                Label email = new Label("Adresse mail : ");
+                vbox2.getChildren().add(email);
+                TextField emailField = new TextField();
+                vbox2.getChildren().add(emailField);
+                
+                Label contenuMail = new Label("Message : ");
+                vbox2.getChildren().add(contenuMail);
+                TextArea messageTextArea = new TextArea();
+                vbox2.getChildren().add(messageTextArea);
+                
+                Button envoiMail = new Button("Envoyer le message");
+                envoiMail.setMinWidth(50);
+                
+                Text reponse = new Text();
+                envoiMail.setOnAction(action -> {
+                    //on reintialise le message du formulaire
+                    reponse.setText("");
+                    
+                    String incorrectValue = ""; 
+                    
+                    /*VERIFICATION DES CHAMPS DU FORMULAIRE*/
+                    if(objetField.getText() == null || objetField.getText().equals("")){
+                        incorrectValue = "Objet";
+                    } 
+                    if(emailField.getText() == null || emailField.getText().equals("")){
+                        incorrectValue = "Adresse mail";
+                    }
+                    if(messageTextArea.getText() == null || messageTextArea.getText().equals("")){
+                        incorrectValue = "Message";
+                    }
+                    
+                    if(!incorrectValue.isEmpty()){
+                        reponse.setText("Veuillez renseigner le champ : "+incorrectValue);
+                    } 
+                    /*SI TOUS LES CHAMPS DU FORMULAIRE SONT REMPLIS ALORS ON ENVOI LE MESSAGE SUR LA BOITE MAIL*/
+                    else{
+                        try{
+                            Email.sendMail(emailField.getText(), objetField.getText(), messageTextArea.getText());
+                            reponse.setText("Votre message a bien été envoyé");
+                        }
+                        catch(Exception e){
+                            
+                        }
+                        
+                    }
+                });
+                
+                vbox2.getChildren().add(envoiMail);
+                vbox2.getChildren().add(reponse);
+                
+                nomMenu.setOnMouseClicked(mouseEvent->{corps.setContent(vbox2);});
                 break;
             case "RESERVERSATIONS" :
                 VBox vbox = new VBox();

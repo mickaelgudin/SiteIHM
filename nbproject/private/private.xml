@@ -4,12 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/MGud/Documents/NetBeansProjects/SiteIHM/src/model/Menu.java</file>
-            <file>file:/C:/Users/MGud/Documents/NetBeansProjects/SiteIHM/src/model/Page.java</file>
             <file>file:/C:/Users/MGud/Documents/NetBeansProjects/SiteIHM/src/siteihm/SiteIHM.java</file>
-            <file>file:/C:/Users/MGud/Documents/NetBeansProjects/SiteIHM/src/model/Reservation.java</file>
-            <file>file:/C:/Users/MGud/Documents/NetBeansProjects/SiteIHM/src/model/Contenu.java</file>
+            <file>file:/C:/Users/MGud/Documents/NetBeansProjects/SiteIHM/src/controller/Email.java</file>
             <file>file:/C:/Users/MGud/Documents/NetBeansProjects/SiteIHM/src/model/BarreMenu.java</file>
-            <file>file:/C:/Users/MGud/Documents/NetBeansProjects/SiteIHM/src/controller/Database.java</file>
         </group>
     </open-files>
 </project-private>
